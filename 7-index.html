@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0d12">
+<title>Spot the Bug - 8 JavaScript traps</title>
+<meta name="description" content="Predict the output of 8 tricky JavaScript snippets. A real Flagsmith A/B test is running underneath: does a hint-then-retry beat an instant explanation?">
+<meta property="og:title" content="Spot the Bug">
+<meta property="og:description" content="8 JavaScript traps. Predict the output. A live Flagsmith experiment runs underneath.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230b0d12'/><text x='32' y='44' font-size='34' text-anchor='middle' fill='%23a78bfa' font-family='monospace' font-weight='700'>{ }</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="app" aria-live="polite"></main>
+<button id="peek" class="peek" aria-label="Show how the experiment works" hidden>under the hood</button>
+<aside id="drawer" class="drawer" hidden>
+  <div class="drawer-head"><strong>Under the hood</strong><button id="drawer-close" aria-label="Close">&times;</button></div>
+  <div id="drawer-body"></div>
+</aside>
+<script type="module" src="app.js"></script>
+</body>
+</html>
