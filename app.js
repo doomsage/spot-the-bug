@@ -52,7 +52,7 @@ async function boot() {
   Q = await (await fetch("questions.json")).json();
   try {
     await Promise.race([
-      flagsmith.init({ environmentID: ENV_KEY, identity: ID, enableAnalytics: false, enableEvents: true, cacheFlags: false }),
+      flagsmith.init({ environmentID: ENV_KEY, identity: ID, enableAnalytics: false, enableEvents: true, eventProcessorConfig: { flushInterval: 2000 }, cacheFlags: false }),
       new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), 8000)),
     ]);
     const on = flagsmith.hasFeature(FLAG);
@@ -186,4 +186,5 @@ function renderDrawer() {
     <div class="kv">post_mistake_next_attempt: you keep going after a mistake (guardrail)</div>`;
 }
 
+addEventListener("pagehide", () => { try { flagsmith.close(800); } catch (e) {} });
 boot();
