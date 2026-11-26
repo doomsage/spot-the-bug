@@ -138,7 +138,9 @@ function finish(q, st) {
   S.results[S.i] = { firstCorrect: st.firstCorrect };
   // primary metric: the follow-up of a pair whose first question was missed is answered right on the first try
   if (q.role === "follow_up" && S.mistakePair[q.pair] && st.firstCorrect) eventOnce("paired_followup_correct");
-  document.getElementById("next").onclick = () => {
+  const nextEl = document.getElementById("next");
+  nextEl.onclick = () => {
+    nextEl.onclick = null; // ignore double taps
     // guardrail: the player carries on after a mistake instead of quitting
     if (q.role === "first" && S.mistakePair[q.pair]) eventOnce("post_mistake_next_attempt");
     S.i++;
