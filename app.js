@@ -162,8 +162,18 @@ function results() {
     <div class="pairs">${Object.entries(pairs).map(([p, v]) => `<div class="pair"><span>${names[p] || p}</span><span>${mark(v.first)} then ${mark(v.follow_up)}</span></div>`).join("")}</div>
     <p class="fine">You saw the <b>${arm}</b> feedback version.${TEST ? " Test mode: nothing was recorded." : ""} Your anonymous random id is only used to keep your group stable.</p>
     <div class="sp"></div>
-    <button class="btn" id="again">Play again</button>`;
+    <button class="btn" id="share">Share my score</button>
+    <div style="height:10px"></div>
+    <button class="btn ghost" id="again">Play again</button>`;
   document.getElementById("again").onclick = intro;
+  document.getElementById("share").onclick = async (e) => {
+    const text = `I got ${score}/8 on Spot the Bug, 8 JavaScript traps. Can you beat it?`;
+    const url = location.origin + location.pathname;
+    try {
+      if (navigator.share) await navigator.share({ text, url });
+      else { await navigator.clipboard.writeText(text + " " + url); e.target.textContent = "Copied"; }
+    } catch (err) { /* cancelled */ }
+  };
 }
 
 // ---- drawer ------------------------------------------------------------------
