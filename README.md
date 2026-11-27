@@ -28,7 +28,7 @@ No simulated or padded traffic is mixed into the results. Whatever Flagsmith's r
 
 ## Prediction
 
-To be written by Kunal before launch.
+I expect hint_then_retry to win. Having to think about the hint before seeing the answer should make the rule stick, so more players should get the twin question right on the first try, with no drop in players who keep going. Written before launch, before seeing any data. (Kunal Dewangan)
 
 ## Run it
 
